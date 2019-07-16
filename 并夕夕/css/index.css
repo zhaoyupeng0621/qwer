@@ -66,6 +66,7 @@
     margin-top: 0.25rem;
     margin-bottom: 0.25rem;
     margin-left: 0.2rem;
+    display:block;
 }
 .zi1{
     font-size: 0.28rem;
@@ -79,16 +80,18 @@
     height: 0.24rem;
     margin-top: 0.38rem;
     margin-bottom: 0.38rem;
-    margin-left: 0.2rem;
+    margin-right: 0.2rem;
 }
 .aae{
-    width: 6.1rem;
+    /* width: 6.1rem; */
+    flex:1;
     margin-top: 0.19rem;
     margin-bottom: 0.21rem;
     margin-left: 0.2rem;
 }
 .aaf{
     background: #FFFFFF;
+    height: 3.5rem;
     padding:0rem 0.2rem; 
     display:flex;
     justify-content: space-between;
@@ -97,7 +100,7 @@
 .aaf li img {
     width: 2.3rem;
     height: 2.3rem;
-    
+    display:block;
     
 }
 /* .aaf li{
@@ -109,16 +112,17 @@
     width: 2.24rem;
     font-size: 0.24rem;
     text-align: center;
-    /* margin-top:  0.19rem; */
+    margin-top:  0.19rem;
+    /* margin-bottom: 0.18rem; */
 }
 .aah{
     font-size: 0.24rem;
     color: #EF1C00;
-    
+    margin-bottom: 0.1rem;
 }
 .bba{
     width: 7.5rem;
-    height: 11rem;
+    height: 11.4rem;
     background: #EEEEEE;
     overflow: hidden;
 }
@@ -138,15 +142,19 @@
 .bbb li img {
     width: 3.5rem;
     height: 3.5rem;
+    display:block;
 }
 .bbg{
     width: 3.5rem;
     font-size: 0.24rem;
     text-align: center;
-    /* margin-top:  0.19rem; */
+    margin-top:  0.19rem;
+    margin-bottom: 0.15rem;
+    display:block;
 }
 .bbe{
     display:flex;
+    
 }
 .cca{
     background: #FFFFFF;
