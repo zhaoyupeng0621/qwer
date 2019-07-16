@@ -1,0 +1,31 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font:12px/1.5 tahoma,arial,"\5b8b\4f53";
+    -webkit-font-smoothing: antialiased;
+}
+.wrapper{
+    width: 1230px;
+    margin:0 auto;
+}
+ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+.arrow{
+    width: 0;
+    height: 0;
+    border:3px solid transparent;
+    border-top:3px solid #bbb;
+    font-size: 0;
+    line-height: 0;
+    position: absolute;
+    right: 8px;
+    top: 15px;
+    transform: rotate(0deg);
+    transition:transform 0.2s linear;
+}
