@@ -49,7 +49,7 @@
 }
 .aaa{
     width: 7.5rem;
-    height: 4.51rem;
+    height: 4.41rem;
     background: #EEEEEE;
     overflow: hidden;
 }
@@ -86,4 +86,87 @@
     margin-top: 0.19rem;
     margin-bottom: 0.21rem;
     margin-left: 0.2rem;
+}
+.aaf{
+    background: #FFFFFF;
+    padding:0rem 0.2rem; 
+    display:flex;
+    justify-content: space-between;
+
+}
+.aaf li img {
+    width: 2.3rem;
+    height: 2.3rem;
+    
+    
+}
+/* .aaf li{
+    width: 2.24rem;
+    /* font-size: 0.24rem;
+    text-align: center; 
+} */
+.aag{
+    width: 2.24rem;
+    font-size: 0.24rem;
+    text-align: center;
+    /* margin-top:  0.19rem; */
+}
+.aah{
+    font-size: 0.24rem;
+    color: #EF1C00;
+    
+}
+.bba{
+    width: 7.5rem;
+    height: 11rem;
+    background: #EEEEEE;
+    overflow: hidden;
+}
+.bbc{
+    font-size: 0.2rem;
+    color: #999999;
+    padding-left: 2.1rem;
+}
+.bbb{
+    background: #FFFFFF;
+    padding:0rem 0.2rem; 
+    display:flex;
+    justify-content: space-between;
+    flex-wrap:  wrap;
+
+}
+.bbb li img {
+    width: 3.5rem;
+    height: 3.5rem;
+}
+.bbg{
+    width: 3.5rem;
+    font-size: 0.24rem;
+    text-align: center;
+    /* margin-top:  0.19rem; */
+}
+.bbe{
+    display:flex;
+}
+.cca{
+    background: #FFFFFF;
+    display: flex;
+    padding: 0.14rem 0.4rem 0.13rem 0.4rem;
+    justify-content: space-between;
+}
+.cca li{
+    width: 0.4rem;
+    font-size: 0.2rem;
+    color:#333333;
+    text-align: center;
+}
+.cca li img{
+    width: 0.4rem;
+    height: 0.4rem;
+}
+.ccc{
+    width: 0.6rem;
+}
+.ccb{
+    color: #EF1C00FF;
 }
