@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var num  = prompt("请输入数字","");
+        num*=1;
+        jzt(num);
+    function jzt(num){
+        for(var i=1;i<=num;i++){
+        for(var j=i;j<=num;j++){
+            document.write('&nbsp;');
+        }
+        for(var k=num+1-i;k<=num;k++)
+        {
+            document.write("*");
+            document.write('&nbsp;');
+        }
+        document.write("</br>");
+    }
+    }
+    </script>
+</body>
+</html>

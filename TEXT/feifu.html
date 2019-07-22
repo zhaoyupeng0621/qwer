@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var y=0;
+        for(var x=1;x<=1000;x++){
+            if(zc(x)){
+                y++;
+                
+            }
+            
+            if(y==6){
+                document.write("</br>");
+                y=1;
+            }
+        }
+        function zc(num) {
+            if (num % 3 == 0 && num % 5 == 0 && num % 7 == 0) {
+                document.write(num);
+                document.write('&nbsp;')
+                return 1;
+            }
+        }
+    </script>
+</body>
+
+</html>

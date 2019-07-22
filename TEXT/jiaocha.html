@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    var a =prompt("请输入第一个字符串","");
+    var b =prompt("请输入第二个字符串","");
+    
+    function jiaocha(x,y){
+        var i,ch;
+        var s1=new String(x);
+        var s2=new String(y);
+        var s=new String();
+        var temp=new String();
+        if(s1.length>=s2.length){
+            i=s2.length;
+        }
+        else{
+            i=s1.length;
+        }
+        for(var j=0;j<i+1;j++){
+            if(j==s1.length){
+                temp=s2.slice(j,s2.length);
+                s=s.concat(temp);
+                break;
+            }
+            if(j==s2.length){
+                temp=s1.slice(j,s1.length);
+                s=s.concat(temp);
+                break;
+            }
+            ch=s1.charAt(j);
+            s+=ch;
+            ch=s2.charAt(j);
+            s+=ch;
+            
+        }
+        return s;
+    }
+    alert(jiaocha(a,b));
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var scores = new Array(7), sum = 0, x = 0;
+
+        for (var i = 0; i < scores.length; i++) {
+            scores[i] = parseInt(prompt("请输入第" + (i + 1) + "门课程的成绩:", ""));
+            sum += scores[i];
+        }
+        document.write("总成绩:" + sum + "<br>");
+        document.write("平均分:" + Math.round(sum / scores.length) + "<P>");
+
+        document.write("以下为不及格的成绩:");
+        for (var i = 0; i < scores.length; i++) {
+            if (scores[i] < 60) {
+                x++;
+                if (x > 1) document.write(",");
+                document.write(scores[i]);
+            }
+        }
+    </script>
+</body>
+
+</html>

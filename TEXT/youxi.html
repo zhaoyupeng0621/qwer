@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    x=0;
+    y=0;
+    var a,b,c;
+    while(true){
+        a=Math.floor(10*Math.random());
+        b=Math.floor(10*Math.random());
+        c=Math.floor(10*Math.random());
+        if(a==0){
+            a++;
+        }
+        if(b==0){
+            b++;
+        }
+        if(c==0){
+            c++;
+        }
+        if(a==8||b==8||c==8){
+            x++;
+            y++
+            alert("胜 "+"胜率"+Math.round((x/y)*100)+"%");
+        }
+        else{
+            y++
+            alert("负 "+"胜率"+Math.round((x/y)*100)+"%");
+        }
+    }
+    </script>
+</body>
+</html>

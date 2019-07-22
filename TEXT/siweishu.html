@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var x,y,z
+    for(var i=1000;i<=10000;i++){
+        x=Math.floor(i/1000);
+        y=Math.floor(i/100)-x*10;
+        z=Math.floor(i/10)-100*x-10*y;
+        if(y+z==x&&i%13==0){
+            alert(i);
+        }
+    }
+    </script>
+</body>
+</html>

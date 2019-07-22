@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        var a = prompt("请输入字符串", "");
+        function tiqu(x) {
+            var s = new String(x), ch;
+            var result = new String();
+            for (var i = 0; i < s.length; i++) {
+                ch = s.charAt(i);
+                if (ch >= "0" && ch <= "9") result += ch;
+            }
+            return result;
+        }
+        alert(tiqu(a))
+    // b.toString().replace(/,/,"");
+    // // document.write(typeof(b));
+    // // document.write(b);
+    // y=b.split("");
+    // document.write(y[1]);
+    // document.write(x[1]);
+    // alert(a.charCodeAt());
+    </script>
+</body>
+
+</html>

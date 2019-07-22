@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var a = prompt("请输入数字", "");
+        a *= 1;
+        var j = 0;
+        for (var i = a; i > 2; i--) {
+            fib(i);
+            document.write(" ");
+            j++;
+            if (j == 6) {
+                document.write("</br>");
+                j = 0
+            }
+        }
+        if (j == 5) {
+            document.write(1);
+            document.write("</br>");
+            document.write(1);
+        }
+        else {
+            document.write(1);
+            document.write(" ");
+            document.write(1);
+        }
+        function fib(num) {
+            var a = 1, b = 1, c = 0;
+            for (var i = 0; i < num - 2; i++) {
+                c = a + b;
+                a = b;
+                b = c;
+            }
+            document.write(c);
+        }
+    </script>
+</body>
+
+</html>
