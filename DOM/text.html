@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div">haha</div>
+    <button>click</button>
+    <script>
+        var aa=document.getElementById('div');
+        var bb=document.getElementsByTagName('button');
+        bb[0].onclick=function(){
+            aa.style.background='red';
+            aa.style.color="green";
+            aa.style.fontSize='1000px';
+        }
+        
+    </script>
+</body>
+</html>
