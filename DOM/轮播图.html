@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        #bb li {
+            float: left;
+            width: 25px;
+            height: 25px;
+            background: rgba(0, 0, 0, 0.6);
+            margin-right: 10px;
+            line-height: 25px;
+            text-align: center;
+            font-size: 14px;
+            color: aliceblue;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #bb {
+            overflow: hidden;
+            position: absolute;
+            right: 5px;
+            bottom: 10px;
+        }
+
+        #cc img {
+            width: 750px;
+            height: 251px;
+            display: none;
+        }
+
+        #aa #cc .cc-1 {
+            display: block;
+        }
+
+        #aa {
+            width: 750px;
+            height: 251px;
+            margin-top: 100px;
+            margin-left: 300px;
+            position: relative;
+        }
+
+        #bb .bb-2 {
+            background: #ff0036;
+        }
+
+        #dd li {
+            float: left;
+            width: 25px;
+            height: 25px;
+            background: rgba(0, 0, 0, 0.6);
+            margin-right: 10px;
+            line-height: 25px;
+            text-align: center;
+            font-size: 14px;
+            color: aliceblue;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #dd {
+            overflow: hidden;
+            position: absolute;
+            left: 5px;
+            bottom: 10px;
+        }
+
+        #dd .dd-1 {
+            background: #ff0036;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="aa">
+        <div id="cc">
+            <img class="cc-1" src="../DOM/img/1.jpg" alt="">
+            <img src="../DOM/img/2.jpg" alt="">
+            <img src="../DOM/img/3.jpg" alt="">
+            <img src="../DOM/img/4.jpg" alt="">
+            <img src="../DOM/img/5.jpg" alt="">
+        </div>
+        <ul id="bb">
+            <li class="bb-2">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+        <ul id="dd">
+            <li class="dd-1">
+                <</li> <li>>
+            </li>
+        </ul>
+
+    </div>
+    <script>
+        aaa = document.getElementById('bb');
+        bbb = aaa.getElementsByTagName('li');
+        ccc = document.getElementById('cc');
+        ddd = ccc.getElementsByTagName('img');
+        eee = document.getElementById('dd');
+        fff = eee.getElementsByTagName('li');
+        www =document.getElementById('aa');
+        ggg = 0;
+        k=0;
+        function change(){
+            
+                k=ggg;
+                // if(k==5){
+                //     k=0;
+                // }
+                k++;
+                if(k==5){
+                    k=0;
+                }
+                for (var i = 0; i < bbb.length; i++) {
+                    bbb[i].className = "";
+                }
+                bbb[k].className = "bb-2";
+                for (var j = 0; j < bbb.length; j++) {
+                    ddd[j].className = "";
+                }
+                ddd[k].className = "cc-1";
+                
+                
+
+                ggg = k;
+            
+            
+        }
+        var timer = setInterval(function(){
+            change();
+        },1500)  
+        www.onmouseout=function(){
+            timer = setInterval(function(){
+            change();
+        },1500)  
+        }
+        www.onmouseover=function(){
+            clearInterval(timer);
+        }
+
+//         banner.onmouseout=function(){
+//    timer=setInterval(change,2000);
+// }
+// timer = setInterval(change, 2000);
+        // while(true){
+        //     var timer = setInterval(function(){
+        //         for(var i=0;i<bbb.length;i++){
+        //         bbb[i].index = i;
+        //         for (var i = 0; i < bbb.length; i++) {
+        //             bbb[i].className = "";
+        //         }
+        //         this.className = "bb-2";
+        //         for (var j = 0; j < bbb.length; j++) {
+        //             ddd[j].className = "";
+        //         }
+        //         ddd[this.index].className = "cc-1"
+        //         ggg = this.index;
+        //     }
+        // },1000)
+        // }
+        for (var i = 0; i < bbb.length; i++) {
+            
+            bbb[i].index = i;
+            bbb[i].onclick = function () {
+                for (var i = 0; i < bbb.length; i++) {
+                    bbb[i].className = "";
+                }
+                bbb[this.index].className = "bb-2";
+                for (var j = 0; j < bbb.length; j++) {
+                    ddd[j].className = "";
+                }
+                ddd[this.index].className = "cc-1"
+                ggg = this.index;
+            }
+        }
+        for (var i = 0; i < fff.length; i++) {
+            fff[i].index1 = i;
+            fff[i].onclick = function () {
+                for (var j = 0; j < fff.length; j++) {
+                    fff[j].className = "";
+                }
+                this.className = "dd-1";
+                if (this.index1 == 0) {
+                    ggg--;
+                }
+                else {
+                    ggg++;
+                }
+                if (ggg == 5) {
+                    ggg = 0;
+                }
+                if (ggg == -1) {
+                    ggg = 4;
+                }
+                for (var j = 0; j < bbb.length; j++) {
+                    ddd[j].className = "";
+                }
+                ddd[ggg].className = "cc-1"
+                for (var i = 0; i < bbb.length; i++) {
+                    bbb[i].className = "";
+                }
+                bbb[ggg].className = "bb-2";
+            }
+        }
+    </script>
+</body>
+
+</html>
