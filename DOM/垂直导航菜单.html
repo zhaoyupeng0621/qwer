@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        #aaa {
+            width: 200px;
+            height: 150px;
+        }
+        #bbb{
+            width: 200px;
+            height: 25px;
+            background: #000;
+            font-size: 18px;
+            color: #fff;
+        }
+        #bbb-1{
+            width: 200px;
+            height: 60px;
+            background: #fff;
+            font-size: 14px;
+            color: #000;
+            border:2px solid #000;
+            box-sizing: border-box;
+            display: none;
+        }
+        #ccc{
+            width: 200px;
+            height: 25px;
+            background: #000;
+            font-size: 18px;
+            color: #fff;
+        }
+        #ccc-1{
+            width: 200px;
+            height: 60px;
+            background: #fff;
+            font-size: 14px;
+            color: #000;
+            border:2px solid #000;
+            box-sizing: border-box;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="aaa">
+        <div id="bbb">
+            管理区
+        </div>
+        <ul id="bbb-1">
+            <li>111</li>
+            <li>2222</li>
+            <li>33333</li>
+        </ul>
+        <div id="ccc">
+            交流区
+        </div>
+        <ul id="ccc-1">
+            <li>111</li>
+            <li>2222</li>
+            <li>33333</li>
+        </ul>
+    </div>
+    <script>
+    var a=document.getElementById('bbb');
+    var b=document.getElementById('bbb-1');
+    var c=document.getElementById('ccc');
+    var d=document.getElementById('ccc-1');
+    a.onclick=function(){
+        if(b.style.display=="none"||b.style.display==""){
+            b.style.display="block";
+        }
+        else{
+            b.style.display="none";
+        }
+        
+    }
+    // a.ondblclick=function(){
+    //     b.style.display="none";
+    // }
+    c.onclick=function(){
+        if(d.style.display=="none"||d.style.display==""){
+            d.style.display="block";
+        }
+        else{
+            d.style.display="none";
+        }
+        
+    }
+    // c.ondblclick=function(){
+    //     d.style.display="none";
+    // }
+    </script>
+</body>
+
+</html>

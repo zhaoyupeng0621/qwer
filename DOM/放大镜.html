@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #small-box,#big-box {
+            width: 400px;
+            height: 400px;
+            float: left;
+            overflow: hidden;
+        }
+        #small-box{
+            position: relative;
+        }
+        #drag{
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            left:0;
+            top:0;
+            background: rgba(255,255,255,0.5);
+            display: none;
+        }
+        
+        #big-box{
+            display: none;
+            position: relative;
+        }
+        #big-img{
+            position:absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="small-box">
+            <img src="images/1.jpg" alt="">
+            <span id="drag"></span>
+        </div>
+        <div id="big-box">
+            <img id="big-img" src="images/2.jpg" alt="">
+        </div>
+    </div>
+    <script>
+        var oSmallBox=document.getElementById('small-box');
+        var oDrag=document.getElementById('drag');
+        var oBigBox=document.getElementById('big-box');
+        var oBigImg=document.getElementById('big-img')
+        oSmallBox.onmouseover=function(){
+            oDrag.style.display="block";
+            oBigBox.style.display="block";
+        }
+        oSmallBox.onmousemove=function(e){
+            oDrag.style.left=e.clientX-oDrag.offsetWidth/2+"px";
+            oDrag.style.top=e.clientY-oDrag.offsetHeight/2+"px";
+            if(oDrag.offsetLeft<0){
+                oDrag.style.left="0px";
+            }
+            var max =oSmallBox.offsetWidth-oDrag.offsetWidth;
+            if(oDrag.offsetLeft>=max){
+                oDrag.style.left=max+"px";
+            }
+            if(oDrag.offsetTop<0){
+                oDrag.style.top="0px";
+            }
+            if(oDrag.offsetTop>=max){
+                oDrag.style.top=max+"px";
+            }
+            var smallDis=oSmallBox.offsetWidth-oDrag.offsetWidth;
+            var bigDis=oBigImg.offsetWidth-oBigBox.offsetWidth;
+            var smallDisY=oSmallBox.offsetHeight-oDrag.offsetHeight;
+            var bigDisY=oBigImg.offsetHeight-oBigBox.offsetHeight;
+            var xPro=oDrag.offsetLeft/smallDis;
+            oBigImg.style.left = -bigDis*xPro+"px";
+
+            oBigImg.style.top = -oDrag.offsetTop/smallDisY *bigDisY +"px";
+
+            
+        }
+        oSmallBox.onmouseout=function(){
+            oDrag.style.display="none";
+            oBigBox.style.display="none";
+        }
+        
+    </script>
+</body>
+</html>
