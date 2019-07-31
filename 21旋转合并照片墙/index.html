@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            height:100%;
+        }
+        #container{
+            background: url(img/bg.jpg) 0 0 repeat ;
+            position: relative;
+            height:100%;
+        }
+        .box{
+            width: 125px;
+            height: 125px;
+            border:5px solid #fff;
+            position: absolute;
+            left:-135px;
+            top:-135px;
+            transition: all 1.5s ease;
+        }
+        #container .box span{
+            width: 125px;
+            height: 125px;
+            display: block;
+            background: #ff0000;
+            opacity: 0;
+            transition: all 0s ease;
+        }
+        #prev,#next{
+            width: 40px;
+            height: 80px;
+            position: absolute;
+            top:50%;
+            margin-top: -40px;
+            display: none;
+
+
+        }
+        #prev{
+            background: #fff url("img/prev.png") center center no-repeat;
+            left:0;
+            border-radius: 0px 10px 10px 0;
+        }
+        #next{
+            background: #fff url("img/next.png") center center no-repeat;
+            right:0;
+            border-radius: 10px 0 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+    </div>
+    <span id="prev"></span>
+    <span id="next"></span>
+    <script>
+        var oContainer = document.getElementById('container');
+        var oPrev = document.getElementById('prev');
+        var oNext = document.getElementById('next');
+        var count = 0;
+        var index = 0;
+        var iNow = 0;
+        // 加载小图
+        for(var i=0; i<24; i++){
+            var oImg = new Image();
+            oImg.onload = function(){
+                count++;
+                if(count == 48){
+                    loadSuccess()
+                }
+            }
+            oImg.src="img/thumbs/"+(i+1)+".jpg";
+        }
+        // 加载大图
+        for(var i=0; i<24; i++){
+            var oImg = new Image();
+            oImg.onload = function(){
+                count++;
+                if(count == 48){
+                    loadSuccess();
+                }
+            }
+            oImg.src="img/"+(i+1)+".jpg";
+        }
+        // 等待所有图片加载完成，再继续（保证能够获取图片属性）
+        function loadSuccess(){
+            //1. 生成24个div 插入到页面左上角
+            for(var i=0; i<4; i++){ //行 数
+                for(var j=0; j<6; j++){ //列数
+                    var oDiv = document.createElement('div');
+                    oDiv.style.background = "url(img/thumbs/"+(i*6+j+1)+".jpg)";
+                    oDiv.className = "box";
+                    oDiv.row = i;
+                    oDiv.col = j;
+                    oDiv.idx = index;
+                    oDiv.innerHTML = "<span></span>";
+                    oDiv.onclick = fn;
+                    index++;
+                    oContainer.appendChild(oDiv);
+                }
+            }
+
+            //2.改变.box的位置 
+            var aBox = document.getElementsByClassName('box');
+            var oBoxWidth = aBox[0].offsetWidth;
+            var oBoxHeight =  aBox[0].offsetHeight;
+            // 水平间距
+            var disX = (container.offsetWidth - 6*oBoxWidth)/7;
+            // 垂直间距
+            var disY = (container.offsetHeight - 4*oBoxHeight)/5;
+
+            // var timer = setInterval(function(){
+            //     for(var i=24; i>0; i--){
+            //     //  col    0
+            //     //        (n+1)
+            //     aBox[i].style.left =  (aBox[i].col+1)*disX + aBox[i].col*oBoxHeight+ "px";
+            //     //  行  1        2               3                   n(从0开始)
+            //     //   1*disY   2*disY + 1*img  3*disY + 2*img      (n+1)*disY +(n)img
+            //     aBox[i].style.top = (aBox[i].row+1)*disY + aBox[i].row*oBoxWidth+ "px";
+            //     aBox[i].style.WebkitTransform = 'rotate('+(Math.random()-0.5)*40+'deg)';
+            // }
+            //     },30);
+            for(var i=0; i<aBox.length; i++){
+                //  col    0
+                //        (n+1)
+                aBox[i].style.transitionDelay = (23-i)*100+"ms";
+                aBox[i].style.left =  (aBox[i].col+1)*disX + aBox[i].col*oBoxHeight+ "px";
+                //  行  1        2               3                   n(从0开始)
+                //   1*disY   2*disY + 1*img  3*disY + 2*img      (n+1)*disY +(n)img
+                aBox[i].style.top = (aBox[i].row+1)*disY + aBox[i].row*oBoxWidth+ "px";
+                aBox[i].style.transform = 'rotate('+(Math.random()-0.5)*40+'deg)';
+            }
+            var iLeft = (oContainer.offsetWidth - 6*127)/2;
+            var iTop = (oContainer.offsetHeight - 4*127)/2;
+
+            var flag = true;  //true  代表打开状态 false 代表合上状态
+            function fn(){
+                //console.log(this.idx); img/(this.idx+1).jpg
+                if(flag){ //合并
+                    for(var i=0; i<aBox.length; i++){
+                        var oDiv = aBox[i];
+                        oDiv.style.transitionDelay = "0ms";
+                        oDiv.style.left = iLeft + 127* oDiv.col +"px";
+                        oDiv.style.top = iTop + 127* oDiv.row +"px";
+                        oDiv.style.border = '1px solid #fff';
+                        oDiv.style.WebkitTransform = 'rotate(0deg)';
+                        var oSpan = oDiv.getElementsByTagName('span')[0];
+                        oSpan.style.opacity = 1;
+                        var x = -oDiv.col *125;
+                        var y = -oDiv.row *125;
+                        oSpan.style.background = 'url(img/'+(this.idx+1)+'.jpg) '+x+'px '+y+'px no-repeat';
+                    }
+                    oSpan.style.background = 'url(img/'+(this.idx+1)+'.jpg) '+(-125)+'px '+(-125)+'px no-repeat';
+                    iNow = this.idx;//记录当前点击div的索引
+
+                    oPrev.style.display = 'block';
+                    oNext.style.display = 'block';
+
+
+                }else{//散开
+                    for(var i=0; i<aBox.length; i++){
+                        var oDiv = aBox[i];
+                        oDiv.style.left = oDiv.col*(disX+135) + disX +"px";
+                        oDiv.style.top = oDiv.row*(disY+135) + disY +"px";
+                        oDiv.style.WebkitTransform = 'rotate('+(Math.random()-0.5)*40+'deg)';
+
+                        oDiv.style.border = '5px solid #fff';
+                        var oSpan = oDiv.getElementsByTagName('span')[0];
+                        oSpan.style.opacity = 0;
+                    }
+                    oPrev.style.display = 'none';
+                    oNext.style.display = 'none';
+                }
+                flag = !flag;
+            }
+            oPrev.onclick = oNext.onclick = function(){
+                if(this == oPrev){
+                    //上一个按钮
+                    iNow--;
+                    if(iNow == -1){
+                        iNow =  aBox.length-1;
+                    }
+                }else{
+                    iNow++;
+                    if(iNow ==  aBox.length){
+                        iNow = 0;
+                    }
+                }
+                var arr = [];
+                for(var i=0; i< aBox.length; i++){
+                    arr.push(i);
+                }
+
+                arr.sort(function(){
+                    return Math.random()-0.5;
+                });
+            var timer = setInterval(function(){
+                    var random = arr.pop();
+                    var oSpan =   aBox[random].getElementsByTagName('span')[0];
+                    oSpan.style.backgroundImage = 'url(img/'+(iNow+1)+'.jpg)';
+                    if(arr.length == 0){
+                        clearInterval(timer);
+                    }
+                },30);
+            }
+
+
+        }
+
+        
+        
+
+
+
+    
+    </script>
+</body>
+</html>

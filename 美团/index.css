@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-size:16px;
+}
+#nav{
+    display: flex;
+    background: #06c1ae;
+}
+.nav-add{
+    width:1.67rem;
+    height:1.01rem;
+    line-height: 1.01rem;
+    text-align: center;
+    color:#fff;
+}
+.nav-mine{
+    width:0.94rem;
+    height:1.01rem;
+    line-height: 1.01rem;
+    text-align: center;
+    color:#fff;
+}
+.nav-search{
+    flex:1;
+    height:0.64rem;
+    background: #00a494;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    color:#68dbce;
+    margin-top:0.2rem;
+}
+.img-1{
+    width: 7.5rem;
+    height: 2.2rem;
+    border: 1px solid #eee;
+}
