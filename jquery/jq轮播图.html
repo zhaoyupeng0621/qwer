@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -84,6 +85,7 @@
         }
     </style>
 </head>
+
 <body>
     <div id="aa">
         <div id="cc">
@@ -102,24 +104,94 @@
         </ul>
         <ul id="dd">
             <li class="dd-1">
-                <</li>
-            <li>>
+                <</li> <li>>
             </li>
         </ul>
 
     </div>
     <script src="jquery-1.12.4.js"></script>
     <script>
-        $(function(){
-    $("#bb li").click(function(){
-      $(this).addClass("bb-2").siblings().removeClass("bb-2");
-      var n=$("#bb li").index(this);
-      $(".cc-"+n).show().siblings("img").hide();
-    })
-  })
-    
-    
-    
+        a = 0;
+        b = 0;
+        jQuery.fn.change = function () {
+            a = b;
+            a++;
+            if (a == 5) {
+                a = 0;
+            }
+            $('#bb li').each(function (i, j) {
+
+                $(j).removeClass('bb-2');
+            })
+            $('#bb li').eq(a).addClass('bb-2');
+            // $('#cc img').each(function(i,j){
+
+            //     $(j).attr('class','');
+            // })
+            $(".cc-" + a).show().siblings("img").hide();
+            b = a;
+        }
+        var timer = setInterval(function () {
+            $('#aa').change();
+        }, 1500)
+        $("#aa").mouseout(function () {
+            timer = setInterval(function () {
+                $('#aa').change();
+            }, 1500)
+        })
+        $("#aa").mouseover(function () {
+            clearInterval(timer);
+        })
+        $(function () {
+            $("#bb li").click(function () {
+                $(this).addClass("bb-2").siblings().removeClass("bb-2");
+                var n = $("#bb li").index(this);
+                $(".cc-" + n).show().siblings("img").hide();
+                b = n;
+            })
+        })
+        $(function () {
+            $("#dd li").click(function () {
+                $(this).addClass("dd-1").siblings().removeClass("dd-1");
+                // var n = b
+                if (b == 4) {
+                    if ($(this).index() == 1) {
+                        b = -1;
+                    }
+                    else {
+                        b = 4;
+                    }
+                }
+                if (b == 0) {
+                    if ($(this).index() == 1) {
+                        b = 0;
+                    }
+                    else {
+                        b = 5;
+                    }
+
+                }
+                if ($(this).index() == 1) {
+
+                    $(".cc-" + ++b).show().siblings("img").hide();
+                }
+
+                if ($(this).index() == 0) {
+                    $(".cc-" + --b).show().siblings("img").hide();
+                }
+                $('#bb li').each(function (i, j) {
+
+                    $(j).removeClass('bb-2');
+                })
+                $('#bb li').eq(b).addClass('bb-2');
+                // b = b;
+            })
+        })
+
+
+
+
     </script>
 </body>
+
 </html>
