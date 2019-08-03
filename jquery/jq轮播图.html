@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        #bb li {
+            float: left;
+            width: 25px;
+            height: 25px;
+            background: rgba(0, 0, 0, 0.6);
+            margin-right: 10px;
+            line-height: 25px;
+            text-align: center;
+            font-size: 14px;
+            color: aliceblue;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #bb {
+            overflow: hidden;
+            position: absolute;
+            right: 5px;
+            bottom: 10px;
+        }
+
+        #cc img {
+            width: 750px;
+            height: 251px;
+            display: none;
+        }
+
+        #aa #cc .cc-0 {
+            display: block;
+        }
+
+        #aa {
+            width: 750px;
+            height: 251px;
+            margin-top: 100px;
+            margin-left: 300px;
+            position: relative;
+        }
+
+        #bb .bb-2 {
+            background: #ff0036;
+        }
+
+        #dd li {
+            float: left;
+            width: 25px;
+            height: 25px;
+            background: rgba(0, 0, 0, 0.6);
+            margin-right: 10px;
+            line-height: 25px;
+            text-align: center;
+            font-size: 14px;
+            color: aliceblue;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #dd {
+            overflow: hidden;
+            position: absolute;
+            left: 5px;
+            bottom: 10px;
+        }
+
+        #dd .dd-1 {
+            background: #ff0036;
+        }
+    </style>
+</head>
+<body>
+    <div id="aa">
+        <div id="cc">
+            <img class="cc-0" src="../DOM/img/1.jpg" alt="">
+            <img class="cc-1" src="../DOM/img/2.jpg" alt="">
+            <img class="cc-2" src="../DOM/img/3.jpg" alt="">
+            <img class="cc-3" src="../DOM/img/4.jpg" alt="">
+            <img class="cc-4" src="../DOM/img/5.jpg" alt="">
+        </div>
+        <ul id="bb">
+            <li class="bb-2">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+        <ul id="dd">
+            <li class="dd-1">
+                <</li>
+            <li>>
+            </li>
+        </ul>
+
+    </div>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function(){
+    $("#bb li").click(function(){
+      $(this).addClass("bb-2").siblings().removeClass("bb-2");
+      var n=$("#bb li").index(this);
+      $(".cc-"+n).show().siblings("img").hide();
+    })
+  })
+    
+    
+    
+    </script>
+</body>
+</html>

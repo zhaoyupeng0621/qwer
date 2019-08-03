@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        #b1 {
+            overflow: hidden;
+        }
+
+        #a1 {
+            margin: 100px;
+        }
+
+        #b1 li {
+            float: left;
+            width: 50px;
+            height: 30px;
+            border-left: 1px solid #ff789f;
+            border-top: 1px solid #ff789f;
+            border-right: 1px solid #ff789f;
+            background: #9b041d;
+            color: azure;
+            margin-right: 10px;
+            font-size: 14px;
+            line-height: 30px;
+            text-align: center;
+        }
+
+        #a1 #b1 .b2 {
+            background: #000;
+        }
+
+        #cc {
+            width: 300px;
+            height: 200px;
+            border: 1px solid #ff789f;
+        }
+
+        #cc div {
+            font-size: 14px;
+            display: none;
+            color: darkslategray;
+        }
+
+        #cc .c0 {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="a1">
+
+        <ul id="b1">
+            <li class="b2">实事</li>
+            <li>体育</li>
+            <li>娱乐</li>
+        </ul>
+
+        <div id="cc">
+            <div class="c0 ">实事</div>
+            <div class="c1 ">体育</div>
+            <div class="c2 ">娱乐</div>
+        </div>
+    </div>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+    $(function(){
+    $("#b1 li").click(function(){
+      $(this).addClass("b2").siblings().removeClass("b2");
+      var n=$("#b1 li").index(this);
+      $(".c"+n).show().siblings("div").hide();
+    })
+  })
+    
+    </script>
+</body>
+</html>
