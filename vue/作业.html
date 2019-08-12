@@ -55,7 +55,7 @@
             <li v-for="(product,index) in proList" @click= "change(product,index)" :class="{selected:product.isSelect}">
                 <input type="checkbox" v-model="checke" :value="index">
                 <span>{{product.name}}</span>
-                <span class="close">[X]</span>
+                <span class="close" @click.stop="del1(index)">[X]</span>
                 <span class="price">{{product.price}}</span>
             </li>
         </ul>
@@ -130,6 +130,9 @@
                     });
                     this.proList = newPro;
                     this.checke = [];
+                },
+                del1(index){
+                    this.proList.splice(index,1);
                 },
                 search(){
                     let newPro = this.proList.filter((product) => {
