@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .dialog {
+            width: 400px;
+            height: 300px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        .dialog-title {
+            border-bottom: 1px solid #ccc;
+        }
+
+        .dialog-close {
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="fn()">登陆</button>
+        <button @click="fn1()">注册</button>
+        <my-dialog title="登陆" v-show="loginShow" @close="fn2(aa)">
+            用户名<input type="text">
+            </br>
+            密码：<input type="password">
+            </br>
+            <button>登陆</button>
+        </my-dialog>
+        <my-dialog title="注册" v-show="regShow" @close="fn2(aa)">
+            用户名<input type="text">
+            </br>
+            密码：<input type="password">
+            </br>
+
+            确认密码<input type="password">
+            </br>
+            <button>注册</button>
+        </my-dialog>
+    </div>
+    <template id="temp">
+        <div class="dialog" v-show="isShow">
+            <div class="dialog-title"><span>{{title}}</span><span class="dialog-close" @click="$emit('close','aa')">X</span></div>
+            <div class="dialog-content">
+                <slot></slot>
+            </div>
+        </div>
+    </template>
+    <script src="vue.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data:{
+                loginShow:false,
+                regShow:false
+            },
+            methods:{
+                fn(){
+                    if(this.regShow==true){
+                        this.regShow=!this.regShow;
+                    }
+                    this.loginShow=!this.loginShow;
+                },
+                fn1(){
+                    if(this.loginShow==true){
+                        this.loginShow=!this.loginShow;
+                    }
+                    this.regShow=!this.regShow;
+                },
+                fn2(aaa){
+                    if(aaa=aa){
+                        this.regShow=!this.regShow;
+                    }
+                }
+            },
+            components: {
+                "myDialog": {
+                    template: "#temp",
+                    props: ["title"],
+                    data(){
+                        return {
+                            isShow:true,
+                        }
+                    },
+                    methods:{
+                        
+                    }
+                }
+            }
+        })
+
+
+    </script>
+</body>
+
+</html>

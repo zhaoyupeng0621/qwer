@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- <style>
+        ul{
+            overflow: hidden;
+        }
+        ul input{
+        float: right;
+        margin-left:20px;
+        }
+    </style> -->
+</head>
+
+<body>
+    <div id="div1">
+        是否需要额外付费设施<input type="checkbox" v-model="flag1" @click="fn()">
+        <ul v-if="flag1">
+            <li v-for="(product,index) in proList1">
+                <span>{{product.name1}}</span>
+                <span>({{product.price1}})</span>
+                <input type="checkbox" @click="add(index)">
+            </li>
+            
+        </ul>
+        <div>订单费用是</div>
+        <ul>
+            <li v-for="(product,index) in proList">
+                <span>{{product.name}}</span>
+                <span>({{product.price}})</span>
+            </li>
+        </ul>
+        <span>总金额是:{{sum()}}</span>
+    </div>
+
+    <script src="vue.js"></script>
+    <script>
+        new Vue({
+            el: '#div1',
+            data: {
+                proList1: [
+                    {
+                        name1: "沙发",
+                        price1: 100,
+                        is:false
+                    }, {
+                        name1: "wifi",
+                        price1: 200,
+                        is:false
+                    }, {
+                        name1: "电脑",
+                        price1: 300,
+                        is:false
+                    }
+                ],
+            proList: [
+                    {
+                        name: "群里豪华",
+                        price: 400
+                    }
+                ],
+                flag1: false,
+            },
+            methods: {
+                add(index) {
+                    if(this.proList1[index].is==false){
+                        this.proList.push({
+                            name:this.proList1[index].name1,
+                            price:this.proList1[index].price1,
+                        });
+                    
+                    }else{
+                        this.proList.forEach((pro,idx) =>{
+                            if(pro.name==this.proList1[index].name1){
+                                this.proList.splice(idx,1);
+                            }
+                        })
+                    }
+                    this.proList1[index].is= !this.proList1[index].is;
+                },
+                sum() {
+                    var totalPrice = 0;
+                    this.proList.forEach(function(pro,idx){
+                            totalPrice += pro.price*1;
+                    });
+                    return totalPrice;
+                },
+                fn(){
+                    this.proList.splice(1);
+                    this.proList1.forEach(function(pro,idx){
+                        pro.is=false;
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
