@@ -34,11 +34,7 @@
   "casts":[
       {
           "alt":"https://movie.douban.com/celebrity/1054521/",
-          "avatars":{
-              "small":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p17525.webp",
-              "large":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p17525.webp",
-              "medium":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p17525.webp"
-          },
+          "avatars":null,
           "name":"蒂姆·罗宾斯",
           "id":"1054521"
       },
