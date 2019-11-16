@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .red{
+            background: #f00;
+        }
+    </style>
+</head>
+<body>
+        <div id="root"></div>
+        <script src="react.development.js"></script>
+        <script src="react-dom.development.js"></script>
+        <script src="browser.min.js"></script>
+    
+        <script type="text/babel">
+            class Main extends React.Component{
+                constructor(){
+                    super();
+                    this.state={
+                        list:[
+                            {
+                                id:0,
+                                name:"吃饭",
+                                flag:true,
+                                flag2:false
+                            },
+                            {
+                                id:1,
+                                name:"睡觉",
+                                flag:true,
+                                flag2:false
+                            },
+                            {
+                                id:2,
+                                name:"打豆豆",
+                                flag:true,
+                                flag2:false
+                            }
+                        ],
+                        num:3,
+                        arr1:[
+                            {
+                                id:0,
+                                name:"吃饭",
+                                flag:true,
+                                flag2:false
+                            },
+                            {
+                                id:1,
+                                name:"睡觉",
+                                flag:true,
+                                flag2:false
+                            },
+                            {
+                                id:2,
+                                name:"打豆豆",
+                                flag:true,
+                                flag2:false
+                            }
+                        ]
+                    }
+                    this.add=this.add.bind(this)
+                    this.remove=this.remove.bind(this)
+                    this.change=this.change.bind(this)
+                    this.search=this.search.bind(this)
+                }
+                add(val){
+                    var temp={
+                        id:this.state.num++,
+                        name:val,
+                        flag:true,
+                        flag2:false
+                    }
+                    var tempList=this.state.list;
+                    // const temp1=Object.assign(tempList,temp)
+                    const temp1 = [...tempList,temp]
+                    this.setState({
+                        list:temp1,
+                        arr1:temp1
+                    })
+                }
+                remove(index){
+                    var tempList=this.state.list;
+                    console.log(index);
+                    tempList.splice(tempList.findIndex(item => item.id === index), 1);
+                    this.setState({
+                        list:tempList,
+                        arr1:tempList
+                    })
+                }
+                change(index){
+                    let arr = [...this.state.list];
+                    arr[index].flag2 = !arr[index].flag2;
+                    this.setState({
+                        list:arr
+                    })
+                }
+                search(value){
+                    let tempArr = this.state.list;
+                    console.log(value)
+                    if(value==""){
+                        tempArr=this.state.arr1
+                        console.log(11)
+                        console.log(tempArr)
+                    }
+                    else{
+                        tempArr = this.state.list.filter((product)=>{
+                        return product.name.includes(value);
+
+                    })
+                    console.log(22)
+                    }
+                    
+                    this.setState({
+                        list:tempArr,
+                    })
+                }
+
+                render(){
+                    return(
+                        <div>
+                            <h1>这是一个todolist</h1>
+                            <Search search={this.search}></Search>
+                            <Children add={this.add}></Children>
+                            <Children1 list={this.state.list} remove={this.remove} change={this.change} ></Children1>
+                        </div>
+                    )
+                    
+                }
+            }
+
+            class Search extends React.Component{
+                render(){
+                    return(
+                        <div>
+                            <input type="text" ref="name8"/>
+                            <button onClick={()=>{
+                                this.props.search(this.refs.name8.value)
+                                this.refs.name8.value=""
+                            }}>搜索</button>
+                        </div>
+                    )
+                }
+            }
+
+            class Children extends React.Component{
+                render(){
+                    return(
+                        <div>
+                            <input type="text" ref="name9"/>
+                            <button onClick={()=>{
+                                this.props.add(this.refs.name9.value)
+                                this.refs.name9.value=""
+                            }}>添加</button>
+                        
+                        </div>
+                    )
+                    
+                }
+            }
+            class Children1 extends React.Component{
+                render(){
+                    this.props.list.map(()=>{
+                        
+                    })
+                    return(
+                        <div>
+                            <ul>
+                                {
+                                    this.props.list.map((val,id)=>{
+                                        return (
+                                            <li key={id} className={val.flag2?"red":''}>
+                                                <input type="checkbox" onClick={()=>{
+                                                    this.props.change(val.id)
+                                                }}/>
+                                                {val.name}
+                                                <button onClick={()=>{
+                                                    this.props.remove(val.id)
+
+                                                }}>移除</button>
+                                            </li>
+                                        )
+                                    })
+                                }    
+                            </ul>
+                        </div>
+                    )
+                }
+            }
+
+            ReactDOM.render(
+                <Main></Main>,
+                document.getElementById('root')
+            )
+
+
+
+        </script>
+    
+</body>
+</html>
