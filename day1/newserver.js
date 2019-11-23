@@ -12,7 +12,7 @@ http.createServer(function(req,res){
 		case "/img":
 			getImg(res);
 			break;
-		default:
+		default: 
 			getFault(res);
 			break;
 	}
