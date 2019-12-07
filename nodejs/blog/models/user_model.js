@@ -37,3 +37,18 @@ update 表名 set 列名=值,列名=值 where id=1
 
 select * from t_users
 select * from t_users where id=1*/
+
+/*
+t_users(uid,uname,pass,nickname,flag,gender,header)
+t_blogs(bid,title,content,date,hits,catalog_id,fen)
+t_blog_catalog(catalog_id,catalog_name)
+t_comments(cid,ccontent,cdate,uid,bid)
+t_messages(mid,mcontent,mdate,sid,rid);
+t_blog_love(lid,bid,uid);
+t_blog_collection(clid,bid,uid);
+t_duty()
+t_duty_catalog()
+t_score()
+t_gift()
+t_gift_catalog()*/
+
